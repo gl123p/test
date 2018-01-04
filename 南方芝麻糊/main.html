@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/zepto.min.js" type="text/javascript"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			/*预加载页*/
+			.wrap{
+				width:100vw;
+				height:100vh;
+				position: relative;
+				/*display: none;*/
+			}
+			.bj1{
+				width: 100%;
+				height: 100%;
+			}
+			.houzi{
+				position: absolute;
+				left: 31%;
+				bottom: 40%;
+				width: 34%;
+			}
+			.logo1{
+				position: fixed;
+				right: 3%;
+				top: 2%;
+				width: 20%;
+			}
+			.load{
+				position: absolute;
+				left: 38%;
+				bottom: 28%;
+				font-size: 1.5rem;
+				color: orange;
+				font-family: "arial, helvetica, sans-serif";
+			}
+			.jindu{
+				position: absolute;
+				left: 40%;
+				bottom: 34%;
+				font-size: 1.2rem;
+				color: orange;
+				font-family: "arial, helvetica, sans-serif";
+			}
+			/*主页面*/
+			.wrap1{
+				width:100vw;
+				height:100vh;
+				position: relative;
+				display:none;
+			}
+			.bj{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			.logo2{
+				position: fixed;
+				right: 3%;
+				top: 2%;
+				width: 20%;
+			}
+			.zhishi{
+				position: absolute;
+				bottom: 2%;
+				width: 100%;
+				z-index: 22;
+			}
+			.go{
+				position: absolute;
+				left: 40%;
+				width: 20%;
+				bottom: 5%;
+				display: none;				
+			}
+			.houzid{
+				position: absolute;
+				left: 13%;
+				top: 65%;
+				width:34%;
+			}
+			/*问题*/
+			.qus{
+				width:100vw;
+				height:100vh;
+				position: relative;
+				display: none;
+			}
+			.qs_bg{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			.qus_title{
+				width: 86%;
+				position: absolute;
+				left: 7%;
+				top:5%;
+			}
+			.q_title{
+				width: 62%;
+				height: 11%;
+				position: absolute;
+				left:26%;
+				top:6%;
+			}
+			.jishu{
+				width: 15%;
+				height: 5%;
+				position: absolute;
+				left:9%;
+				top: 14%;
+				text-align: center;
+				font-size: 1.2rem;
+			}
+			.qus_img{
+				width: 50%;
+				position: absolute;
+				left: 25%;
+				top: 22%;
+			}
+			.aa{
+				width: 86%;
+				height: 12%;
+				position: absolute;
+				bottom: 43%;
+				left: 7%;
+			}
+			.icon{
+				position: absolute;
+				right: 5%;
+				top: 25%;
+				width: 8%;
+				display: none;
+			}
+			.ans_A,.ans_B,.ans_C,.ans_D{
+				width: 100%;
+			}
+			.ans{
+				width: 67%;
+				height:65%;
+				position: absolute;
+				bottom:20%;
+				left: 18%;
+				font-size: 30px;
+				line-height: 50px;
+			}
+			.bb{
+				width: 86%;
+				height: 12%;
+				position: absolute;
+				bottom: 30%;
+				left: 7%;
+			}
+			.cc{
+				width: 86%;
+				height: 12%;
+				position: absolute;
+				bottom: 17%;
+				left: 7%;
+			}
+			.dd{
+				width: 86%;
+				height: 12%;
+				position: absolute;
+				bottom: 4%;
+				left: 7%;
+			}
+			/*恭喜*/
+			.gongxi{
+				width: 100vw;
+				height: 100vh;
+				position: relative;
+				display: none;
+			}
+			.defen_bg{
+				position: absolute;
+				width:100%;
+				height:100%;
+			}
+			/*.gong{
+				width: 100vw;
+				height: 100vh;
+				position: relative;
+				display: none;
+			}*/
+			.defen{
+				width: 75%;
+				font-family: "微软雅黑";
+				font-size:1.8rem;
+				color:#502e35;
+				position: absolute;
+				left: 20%;
+				top: 28%;
+			}
+			.fen{
+				/*display: inline-block;
+				width: 5%;*/
+				text-align: center;
+			}
+			.chenghao{
+				position: absolute;
+				top: 44%;
+				left: 26%;
+				font-family: "微软雅黑";
+				font-size:2.3rem;
+				color:#502e35;
+			}
+			.bang{
+				width: 80%;
+				position: absolute;
+				left: 10%;
+				top: 62%;
+			}
+			.bang p{
+				color: gold;
+				font-family: "微软雅黑";
+				font-size:1.4rem;
+				text-align: center;
+			}
+			.again{
+				width: 40%;
+				position:absolute;
+				left: 8%;
+				bottom: 0;
+				z-index: 22;
+			}
+			.choujiang{
+				width: 40%;
+				position:absolute;
+				right: 8%;
+				bottom: 0;
+				z-index: 22;
+			}
+			.tiaozhan{
+				width: 40%;
+				position:absolute;
+				right: 8%;
+				bottom: 0;
+				z-index: 22;
+				display: none;
+			}
+			.share{
+				width: 40%;
+				position:absolute;
+				left: 27%;
+				bottom: 0;
+			}
+			.logoa{
+				width: 20%;
+				position: absolute;
+				right: 2%;
+				top: 1%;
+			}
+			/*抽奖*/
+			.chou_wrap{
+				width: 100vw;
+				height: 100vh;
+				position: relative;
+				display: none;
+			}
+			.choujiang_bg{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			.youhui{
+				width: 66%;
+				position: absolute;
+				left: 17%;
+				top: 25%;
+			}
+			.lingqu{
+				width: 25%;
+				position: absolute;
+				right: 25%;
+				top:53%;
+			}
+			.xinxi_wrap{
+				width:70%;
+				height: 52.5%;
+				position: absolute;
+				left: 15%;
+				top: 25%;
+				display: none;
+			}
+			.xinxi{
+				width: 100%;
+			}
+			.xinx{
+				width:80%;
+				height: 60%;
+				position: absolute;
+				top: 38%;
+				left:10%;
+				font-size: 18px;
+				text-align: center;
+			}
+			.bl{
+				width:80%;
+				margin-top:20px;
+				border: none;
+				border-bottom: 1px black solid;
+				font-size: 18px;	
+			}
+			.xinx input:nth-of-type(4){
+				width: 100%;
+			}
+			.tijiao{
+				position: absolute;
+				bottom: 7%;
+				right: 5%;
+				display: inline-block;
+				width: 20%;
+				height: 15%;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!--loding页面-->
+		<div class="wrap">
+			<img class="bj1" src="img/loading.png"/>
+			<img class="houzi" src="img/houzi01.png"/>
+			<img class="logo1" src="img/logo.png"/>
+			<p class="load">loding…</p>
+			<p class="jindu"></p>
+		</div>
+		
+		<!--主页面-->
+		<div class="wrap1">
+			<img class="bj" src="img/dati_bg.png"/>
+			<img class="logo2" src="img/logo.png"/>
+			<img class="zhishi" src="img/zhishi.png"/>
+			<img class="go" src="img/dati02_go.png"/>
+			<img class="houzid" src="img/houzi.png"/>
+		</div>
+		
+		<!--问题页面-->
+		<div class="qus">
+			<img class="qs_bg" src="img/loading.png"/>
+			<img class="qus_title" src="img/q_title.png"/>
+			<img class="qus_img"/>
+			<p class="q_title"></p>
+			<p class="jishu"></p>
+			<div class="aa">
+				<img class="anser ans_A" src="img/ans_A.png"/>
+				<p class="ans pa"></p>
+				<img class="icon_a icon"/>
+			</div>
+			<div class="bb">
+				<img class="anser ans_B" src="img/ans_B.png"/>	
+				<p class="ans pb"></p>
+				<img class="icon_b icon"/>
+			</div>
+			<div class="cc">
+				<img class="anser ans_C" src="img/ans_C.png"/>	
+				<p class="ans pc"></p>
+				<img class="icon_c icon"/>
+			</div>
+			<div class="dd">
+				<img class="anser ans_D" src="img/ans_D.png"/>	
+				<p class="ans pd"></p>
+				<img class="icon_d icon"/>
+			</div>	
+		</div>
+		<!--恭喜-->
+		<div class="gongxi">
+			<img class="defen_bg" src="img/gongxi.png"/>
+			<p class="defen">
+				您答对
+				<span class="fen"></span>
+				<span>题，获得</span>
+				<span class="fen"></span>
+				分
+			</p>
+			<!--<div class=".gong">-->
+				<p class="chenghao">西游八级学者</p>
+				<div class="bang">
+					<p>太棒啦，你已经可以抽奖啦！！</p>
+					<p>你离学霸只差喝一罐芝麻糊的距离！</p>
+				</div>
+			<!--</div>-->
+			<img class="logoa" src="img/logo.png"/>
+			<img class="again" src="img/again.png"/>	
+			<img class="choujiang" src="img/choujiang.png"/>
+			<img class="share" src="img/share.png"/>
+			<img class="tiaozhan" src="img/tiaozhan.png"/>
+		</div>
+		<!--抽奖-->
+		<div class="chou_wrap">
+			<img class="choujiang_bg" src="img/choujiang_bg.png"/>
+			<img class="logoa" src="img/logo.png"/>
+			<img class="again" src="img/again.png"/>	
+			<img class="choujiang" src="img/choujiang.png"/>
+			<img class="share share1" src="img/share.png"/>
+			<img class="youhui" src="img/youhui15.png" />
+			<img class="lingqu" src="img/lingqu.png"/>
+			<div class="xinxi_wrap">
+				<img class="xinxi" src="img/tianxie.png"/>
+				<div class="xinx" action="" method="get">
+					<!--<div class="bl">-->
+						姓名：<input name="yys" class="bl xingming" type="text" /><br />
+					<!--</div>
+					<div class="bl">-->
+						电话：<input name="yys" class="bl tel" type="text" /><br />
+					<!--</div>
+					<div class="bl">-->
+						地址：<input name="yys" class="bl adr" type="text" /><br />
+					<!--</div>
+					<div class="bl">-->
+						<!--<input name="yys" class="bl" type="text" />-->
+					<!--</div>-->
+					<button name="yys" class="tijiao">提交</button>
+				</div>
+			</div>
+				
+		</div>
+	</body>
+	<script type="text/javascript">
+		var hz=document.querySelector(".houzi"),
+			bj1=document.querySelector('.bj1'),
+			load=document.querySelector('.load'),
+			jindu=document.querySelector('.jindu'),
+			logo1=document.querySelector('.logo1');	
+		var bj=document.querySelector('.bj'),
+			logo2=document.querySelector('.logo2'),
+			zhishi=document.querySelector('.zhishi'),
+			go=document.querySelector('.go'),
+			houzid=document.querySelector('.houzid'),
+			q_title=document.querySelector('.q_title'),
+			ans=document.querySelectorAll('.ans'),
+			qus_img=document.querySelector('.qus_img'),
+			icon_a=document.querySelector('.icon_a'),
+			icon_b=document.querySelector('.icon_b'),
+			icon_c=document.querySelector('.icon_c'),
+			icon_d=document.querySelector('.icon_d'),
+			icon=document.querySelectorAll('.icon'),
+			gongxi=document.querySelector('.gongxi'),
+			defen_bg=document.querySelector('.defen_bg'),
+			qus=document.querySelector('.qus'),
+			jishu=document.querySelector('.jishu'),
+			fen=document.querySelectorAll('.fen');
+		//分享.抽奖.再来一次	
+		var gongxi=document.querySelector('.gongxi'),
+			chenghao=document.querySelector('.chenghao'),
+			share1=document.querySelector('.share1'),
+			xinxi_wrap=document.querySelector('.xinxi_wrap'),
+			youhui=document.querySelector('.youhui'),
+			chou_wrap=document.querySelector('.chou_wrap'),
+			defen_bg=document.querySelector('.defen_bg'),
+			share=document.querySelector('.share'),
+			choujiang=document.querySelector('.choujiang'),
+			tiaozhan=document.querySelector('.tiaozhan'),
+			bang=document.querySelector('.bang'),
+			xingming=document.querySelector('.xingming'),
+			tel=document.querySelector('.tel'),
+			adr=document.querySelector('.adr'),
+			tijiao=document.querySelector('.tijiao');
+		
+//		console.log(icon)
+		//预加载页
+			//猴子动画
+		var brr=['img/houzi01.png','img/houzi02.png','img/houzi03.png']
+		var n=0;
+		var timer1=setInterval(function(){
+			hz.src=brr[n];
+			n++
+			if(n>=3){
+				n=0;
+			}
+		},200)
+		
+		var arr=['img/again.png','img/ans_A.png','img/ans_B.png','img/ans_C.png','img/ans_D.png','img/chayidian.png','img/choujiang_bg.png','img/choujiang.png','img/dati_bg.png','img/dati_bg02.png','img/dati02_go.png','img/gongxi.png','img/houzi.png','img/houzi01.png','img/houzi02.png','img/houzi03.png','img/icon01.png','img/icon02.png','img/lingqu.png','img/loading.png','img/logo.png','img/pic1.png','img/pic10.png','img/pic11.png','img/pic12.png','img/pic13.png','img/pic14.png','img/pic15.png','img/pic16.png','img/pic17.png','img/pic18.png','img/pic19.png','img/pic2.png','img/pic20.png','img/pic21.png','img/pic22.png','img/pic23.png','img/pic24.png','img/pic25.png','img/pic26.png','img/pic27.png','img/pic28.png','img/pic29.png','img/pic3.png','img/pic30.png','img/pic4.png','img/pic5.png','img/pic6.png','img/pic7.png','img/pic8.png','img/pic9.png','img/q_title.png','img/share.png','img/tianxie.png','img/tiaozhan.png','img/xinxi_bg.png','img/youhui15.png','img/youhui5.png','img/zhishi.png']
+//		console.log(arr.length)
+		var count=0
+		for(i=0;i<arr.length;i++){
+			var newimg=new Image();
+			newimg.src=arr[i]
+			newimg.onload=function(){
+				count++
+				//1.数字进度
+				var percent=Math.floor(count/arr.length*100)
+				document.querySelector(".jindu").innerText=percent+"%"
+				//标志所有图片加载完毕
+				if(count==arr.length){
+					setTimeout(function(){
+						clearInterval(timer1)
+						$('.wrap').css('display','none')
+						$('.wrap1').css('display','block')
+					},1000)
+				}
+			}
+		}
+		
+		//主页面
+		//猴子动画
+		var timerh=setInterval(function(){
+			if(houzid.style.top=='65%'){
+				houzid.style.top='70%'
+				houzid.style.transition='1s'
+			}else{
+				houzid.style.top='65%'
+				houzid.style.transition='1s'
+			}
+		},1000)
+		
+		//点击事件动画
+		$(".zhishi").tap(function(){
+			$(".zhishi").animate({
+				bottom:'1%'
+			},400,"swing",function(){
+				$(this).css({
+					bottom:"2%"
+				})
+			})
+			setTimeout(function(){
+				bj.src='img/dati_bg02.png'
+				go.style.display='block'
+				logo2.style.display='none'
+				zhishi.style.display='none'
+				houzid.style.display='none'
+				clearInterval(timerh)
+			},1000)
+		})	
+		
+		//go
+		$(".go").tap(function(){
+			$(".go").animate({
+				bottom:'3%'
+			},400,"swing",function(){
+				$(this).css({
+					bottom:"5%"
+				})
+			})
+			setTimeout(function(){
+				$('.wrap1').css('display','none')
+				$('.qus').css('display','block')
+			},1000)
+		})
+			
+			
+		//问题页面
+		var questionList = {
+		    brand: [
+		        {question: '“黑~芝麻糊~~~哎”,南方黑芝麻的经典广告片“叫卖篇”哪一年在电视上风靡全国？', answer:[["2046年",0],["1990年",0],["1991年",1],["1997年",0]],icon:22},
+		        {question: '“南方黑芝麻”品牌发源地在哪里呢？', answer:[["南极",0],["南山南",0],["广西南宁",0],["广西容县",1]],icon:23},
+		        {question: '砖家建议，一天吃多少克黑芝麻为宜？', answer:[["30-40g",0],["90-100g",0],["10-15g",1],["想吃多少吃多少",0]],icon:24},
+		        {question: '下面不属于黑芝麻功能特性的是？', answer:[["抗衰老",0],["提高生育能力",0],["黑头发",0],["得道成仙",1]],icon:25},
+		        {question: '100g黑芝麻的含钙量是100g牛奶含钙量的多少倍？', answer:[["100倍",0],["10倍",0],["7.5倍",1],["15倍",0]],icon:26},
+		        {question: '南方黑芝麻糊2015年的最新广告片“音乐篇”中，翩翩起舞的女主角身穿什么颜色的裙子呢？', answer:[["黑色",0],["黄色",1],["蓝色",0],["粉色",0]],icon:27},
+		        {question: '这是一道送分题，双12晚上，几点几分锁定浙江卫视可以看南到方黑芝麻糊冠名的《西游奇遇记》首播？', answer:[["20：20",1],["20：10",0],["20：00",0],["20：30",0]],icon:28},
+		        {question: '南方黑芝麻糊冠名的《西游奇遇记》里金星老师扮演的是？', answer:[["白龙马",0],["女儿国国王",0],["太白金星",1],["观音菩萨",0]],icon:29},
+		        {question: '南方黑芝麻糊冠名的《西游奇遇记》首站在哪里拍摄的？', answer:[["花果山",0],["西安",1],["火焰山",0],["北京",0]],icon:30}
+		    ],
+		    xiyou: [
+		        {question: '牛魔王的老婆“铁扇公主”又名？', answer:[["小甜甜",0],["红佛女",0],["药叉女",0],["罗刹女",1]],icon:1},
+		        {question: '八戒为什么长的像个猪？', answer:[["整容失败",0],["他本来就那模样",0],["投错了胎",1],["他喜欢猪，故意变成这样",0]],icon:2},
+		        {question: '玉皇大帝和王母娘娘到底什么关系？', answer:[["夫妻",0],["母子",0],["同事",1],["不清不楚的关系",0]],icon:3},
+		        {question: '黑熊精偷了唐僧的袈裟是为什么？', answer:[["别人的就是好的",0],["开生日趴体",1],["穿的拉轰、能泡妞",0],["金光闪闪，壕气",0]],icon:4},
+		        {question: '二郎神和玉帝是什么关系？', answer:[["父子",0],["叔侄",1],["基友",0],["蓝朋友",0]],icon:5},
+		        {question: '菩提始祖为什么轰走了孙悟空？', answer:[["猴子吃的太多",0],["猴子长的太帅",0],["猴子是逗逼",0],["猴子装逼",1]],icon:6},
+		        {question: '白龙马是谁的儿子？', answer:[["东海龙王",0],["南海龙王",0],["北海龙王",0],["西海龙王",1]],icon:7},
+		        {question: '通天河里的妖怪原本是观音菩萨池塘里的哪条鱼？', answer:[["鲤鱼",1],["鲶鱼",0],["金鱼",0],["金龙鱼",0]],icon:8},
+		        {question: '孙悟空师从何处？', answer:[["唐僧",0],["菩提老祖",1],["自学成才",0],["太白金星",0]],icon:9},
+		        {question: '西游记是谁写的？', answer:[["吴承恩",1],["吴奇隆",0],["吴孟达",0],["吴彦祖",0]],icon:10},
+		        {question: '原著中的孙悟空和下面哪个明星身高最接近？', answer:[["郭敬明",1],["隔壁老王",0],["何炅",0],["黄晓明",0]],icon:11},
+		        {question: '白龙马和被哪吒扒皮的龙三太子是什么关系？', answer:[["堂兄弟",1],["男朋友",0],["大舅舅",0],["好基友",0]],icon:12},
+		        {question: '当年是哪个妖精先谣言“吃唐僧肉可长生不老”？', answer:[["黑熊怪",0],["蛇精男",0],["狮驼洞三怪",0],["金角大王",1]],icon:13},
+		        {question: '要进盘丝洞，要先喊？', answer:[["傅文佩，你开门啊",0],["芝麻开门",1],["我是盘丝大仙",0],["妖精，哪里逃！",0]],icon:14},
+		        {question: '猪八戒前身“天蓬元帅”在天庭任什么职？', answer:[["总政少将",0],["陆军军委",0],["海军总司令",1],["志愿兵",0]],icon:15},
+		        {question: '红孩儿的真实年纪是？', answer:[["5岁",0],["300岁",1],["500岁",0],["100岁",0]],icon:16},
+		        {question: '孙悟空大闹蟠桃会，变成谁的样子骗吃骗喝？', answer:[["王母娘娘",0],["赤脚大仙",1],["太上老君",0],["太白金星",0]],icon:17},
+		        {question: '因为谁导致唐僧赶走孙悟空？', answer:[["孔雀公主",0],["白骨精",1],["狐狸精",0],["金鼻白毛鼠精",0]],icon:18},
+		        {question: '下列人物中没有喝过“孙、八、僧”三人组的圣水的是？', answer:[["虎力大仙",0],["鹿力大仙",0],["羊力大仙",0],["牛力大仙",1]],icon:19},
+		        {question: '第一个想娶唐僧的女妖怪是？', answer:[["凤姐",0],["琵琶精",1],["蝎子精",0],["玉兔精",0]],icon:20},
+		        {question: '太上老君的御用炼丹炉童子是？', answer:[["青狮魔王&白象魔王&大鹏魔王&虎威魔王",0],["奔波儿灞&灞波儿奔",0],["金角大王&银角大王",1],["辟寒大王&辟暑大王&辟尘大王",0]],icon:21}
+		    ]
+		}
+		//随机问题封装函数
+		//随机出n个互相不等的整数，存到数组中
+		function getRandomArr(min,max,num){
+			//1、随机出特定长度特定范围的数组
+			var arr1=[]
+			var judge=false;
+			while(arr1.length<num){
+				var r2 = Math.floor(Math.random()*(max-min)+min);
+				for(var i=0;i<arr1.length;i++){
+					if(arr1[i]==r2){
+						judge=true;
+						break;
+					}
+				}
+				if(judge==false){
+					arr1.push(r2)
+				}
+				judge=false;
+			}
+			return arr1;
+		}
+		
+		//封装函数,再玩一次调用
+		function ff(){
+			//随机品牌问题,随机西游问题
+			var srr=getRandomArr(0,9,3),grr=getRandomArr(0,21,7);
+			var bra=questionList.brand,xiy=questionList.xiyou;
+			//console.log(srr,grr)
+			var trr=[];
+			var countz=0;
+			var shu=1;
+			var sum=0;
+			var xx=['八','九','十'];
+			//合并数组
+			for(var i=0;i<srr.length;i++){
+				trr.push(bra[srr[i]])
+			}
+			for(var i=0;i<grr.length;i++){
+				trr.push(xiy[grr[i]])
+			}
+//			console.log(trr,trr[countz].answer)
+			function w(){
+				var crr = getRandomArr(0,4,4);
+				var zrr=[]
+				for(var i=0;i<crr.length;i++){
+					zrr.push(trr[countz].answer[crr[i]])
+//					console.log(zrr)
+				}
+				q_title.innerText=trr[countz].question
+				q_title.style.fontSize=Math.round(Math.sqrt(10000/q_title.innerText.length))+'px'
+				if(shu==10){
+					jishu.innerText='0'+shu;
+				}else{
+					jishu.innerText='00'+shu;
+				}
+				qus_img.src='img/'+'pic'+trr[countz].icon+'.png';
+				ans[0].innerText=zrr[0][0];
+				ans[1].innerText=zrr[1][0];
+				ans[2].innerText=zrr[2][0];
+				ans[3].innerText=zrr[3][0];
+				//字号
+				for(var i=0;i<ans.length;i++){
+					if(ans[i].innerText.length>8){
+						ans[i].style.fontSize='14px';
+					}else{
+						ans[i].style.fontSize='30px';
+					}
+				}
+	
+				//判断
+				for(var j=0;j<zrr.length;j++){
+					if(zrr[j][1]==1){
+						icon[j].src="img/icon01.png"
+	//					console.log(22)
+					}else if(zrr[j][1]==0){
+						icon[j].src="img/icon02.png"
+					}
+				}
+			}
+			w()
+			
+			//问题页点击动画
+			//A
+			$('.aa').tap(function(){
+				$(".aa").animate({
+					bottom:'42%'
+				},400,"swing",function(){
+					$(this).css({
+						bottom:"43%"
+					})
+				})
+				icon_a.style.display='block'
+				setTimeout(function(){
+					countz++
+//					console.log(countz)
+					shu++
+					icon_a.style.display='none'
+					if(icon_a.src.search('icon01')!=-1){
+						sum++
+						console.log(sum)
+						fen[0].innerText=sum
+						fen[1].innerText=sum
+						if(sum>=8){
+							chenghao.innerText='西游'+xx[sum-8]+'级学者';
+							defen_bg.src='img/gongxi.png';
+							share.style.display='block';
+							choujiang.style.display='block';
+							tiaozhan.style.display='none';
+							chenghao.style.display='block';
+							bang.style.display='block';
+						}
+						else{
+							defen_bg.src='img/chayidian.png';
+							share.style.display='none';
+							choujiang.style.display='none';
+							tiaozhan.style.display='block';
+							chenghao.style.display='none';
+							bang.style.display='none';
+						}
+					}
+					if(countz==10){
+						qus.style.display='none'
+						gongxi.style.display='block'
+						countz=0
+						sum=0
+					}
+					w()
+				},300)
+			})
+			//B
+			$('.bb').tap(function(){
+				$(".bb").animate({
+					bottom:'29%'
+				},400,"swing",function(){
+					$(this).css({
+						bottom:"30%"
+					})
+				})
+				icon_b.style.display='block'
+				setTimeout(function(){
+					countz++
+//					console.log(countz)
+					shu++
+					icon_b.style.display='none'
+					if(icon_b.src.search('icon01')!=-1){
+						sum++
+						console.log(sum)
+						fen[0].innerText=sum
+						fen[1].innerText=sum
+						if(sum>=8){
+							chenghao.innerText='西游'+xx[sum-8]+'级学者'
+							defen_bg.src='img/gongxi.png';
+							share.style.display='block';
+							choujiang.style.display='block';
+							tiaozhan.style.display='none';
+							chenghao.style.display='block';
+							bang.style.display='block';
+						}
+						else{
+							defen_bg.src='img/chayidian.png';
+							share.style.display='none';
+							choujiang.style.display='none';
+							tiaozhan.style.display='block';
+							chenghao.style.display='none';
+							bang.style.display='none';
+						}
+					}
+					if(countz==10){
+						qus.style.display='none'
+						gongxi.style.display='block'
+						countz=0
+						sum=0
+					}
+					w()
+				},300)
+			})
+			//C
+			$('.cc').tap(function(){
+				$(".cc").animate({
+					bottom:'16%'
+				},400,"swing",function(){
+					$(this).css({
+						bottom:"17%"
+					})
+				})
+				icon_c.style.display='block'
+				setTimeout(function(){
+					countz++
+//					console.log(countz)
+					shu++
+					icon_c.style.display='none'
+					if(icon_c.src.search('icon01')!=-1){
+						sum++
+						console.log(sum)
+						fen[0].innerText=sum
+						fen[1].innerText=sum
+						if(sum>=8){
+							chenghao.innerText='西游'+xx[sum-8]+'级学者'
+							defen_bg.src='img/gongxi.png';
+							share.style.display='block';
+							choujiang.style.display='block';
+							tiaozhan.style.display='none';
+							chenghao.style.display='block';
+							bang.style.display='block';
+						}
+						else{
+							defen_bg.src='img/chayidian.png';
+							share.style.display='none';
+							choujiang.style.display='none';
+							tiaozhan.style.display='block';
+							chenghao.style.display='none';
+							bang.style.display='none';
+						}
+					}
+					if(countz==10){
+						qus.style.display='none'
+						gongxi.style.display='block'
+						countz=0
+						sum=0
+					}
+					w()
+				},300)
+			})
+			//D
+			$('.dd').tap(function(){
+				$(".dd").animate({
+					bottom:'3%'
+				},400,"swing",function(){
+					$(this).css({
+						bottom:"4%"
+					})
+				})
+				icon_d.style.display='block'
+				setTimeout(function(){
+					countz++
+//					console.log(countz)
+					shu++
+					icon_d.style.display='none'
+					if(icon_d.src.search('icon01')!=-1){
+						sum++
+						console.log(sum)
+						fen[0].innerText=sum
+						fen[1].innerText=sum
+						if(sum>=8){
+							chenghao.innerText='西游'+xx[sum-8]+'级学者'
+							defen_bg.src='img/gongxi.png';
+							share.style.display='block';
+							choujiang.style.display='block';
+							tiaozhan.style.display='none';
+							chenghao.style.display='block';
+							bang.style.display='block';
+						}
+						else{
+							defen_bg.src='img/chayidian.png';
+							share.style.display='none';
+							choujiang.style.display='none';
+							tiaozhan.style.display='block';
+							chenghao.style.display='none';
+							bang.style.display='none';
+						}
+					}
+					if(countz==10){
+						qus.style.display='none'
+						gongxi.style.display='block'
+						countz=0
+						sum=0
+					}
+					w()
+				},300)
+			})
+		}
+		ff()
+		
+		//恭喜
+		$('.again').tap(function(){
+			$('.again').animate({
+				bottom:'-1%'
+			},400,"swing",function(){
+				$(this).css({
+					bottom:'0'
+				})
+			})
+			setTimeout(function(){
+				$('.wrap1').css('display','block')
+				bj.src='img/dati_bg02.png'
+				go.style.display='block'
+				logo2.style.display='none'
+				zhishi.style.display='none'
+				houzid.style.display='none'
+				gongxi.style.display='none'
+				chou_wrap.style.display='none'
+				ff()
+			},100)
+		})
+		$('.share').tap(function(){
+			$('.share').animate({
+				bottom:'-1%'
+			},400,"swing",function(){
+				$(this).css({
+					bottom:'0'
+				})
+			})
+		})
+		$('.tiaozhan').tap(function(){
+			$('.tiaozhan').animate({
+				bottom:'-1%'
+			},400,"swing",function(){
+				$(this).css({
+					bottom:'0'
+				})
+			})
+		})
+		var dd=["img/youhui15.png","img/youhui5.png"]
+		var k=Math.floor(Math.random()*2)
+		$('.choujiang').tap(function(){
+			$('.choujiang').animate({
+				bottom:'-1%'
+			},400,"swing",function(){
+				$(this).css({
+					bottom:'0'
+				})
+			})
+			setTimeout(function(){
+				gongxi.style.display='none';
+				chou_wrap.style.transition='1s ease'
+				chou_wrap.style.display='block';
+				share1.style.display='none';
+				youhui.src=dd[k]
+				console.log(dd[k])
+			},200)
+		})
+		//领取
+		$('.lingqu').tap(function(){
+			$('.lingqu').animate({
+				top:'54%'
+			},400,"swing",function(){
+				$(this).css({
+					top:'53%'
+				})
+			})
+			setTimeout(function(){
+				youhui.style.display='none';
+				$('.again').css('display','none');
+				xinxi_wrap.style.display='block';
+				$('.choujiang').css('display','none');
+			},200)
+		})
+		
+		//正则
+		var reg1=/^0?1[0-9]\d{9}$/;
+		$('.tijiao').tap(function(){
+			var mtel=tel.value;
+			if(xingming.value==''||tel.value==''||adr.value==''){
+				alert('内容不能为空！请正确填写相关信息！')
+			}else if(mtel.match(reg1)==null){
+				alert('请正确填写手机号')
+			}
+			else{
+				alert('提交成功！请耐心等待7-10天')
+			}
+			xingming.value='';
+			tel.value='';
+			adr.value='';
+		})
+//		var reg = /[\u4e00-\u9fa5]/g;
+//		xingming.addEventListener('blur',function(){
+//			var mxingming=xingming.value;
+//			if(mxingming.match(reg)==null){
+//				alert('请正确填写姓名')
+//			}
+//		},false)
+		
+		tel.addEventListener('blur',function(){
+			var mtel=tel.value;
+			if(mtel.match(reg1)==null){
+				alert('请正确填写手机号')
+			}
+		},false)
+		
+	</script>
+</html>
